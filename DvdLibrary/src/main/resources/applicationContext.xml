@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans.xsd
+          http://www.springframework.org/schema/mvc
+          http://www.springframework.org/schema/mvc/spring-mvc.xsd
+          http://www.springframework.org/schema/tx
+          http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+          http://www.springframework.org/schema/context
+          http://www.springframework.org/schema/context/spring-context.xsd
+          http://www.springframework.org/schema/aop  
+          http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+
+    <bean id="myIo=" class="com.mthree.dvdlibrary.ui.UserIOConsoleImpl">
+        <constructor-arg index="0">
+            <array>
+                <value>G</value>
+                <value>PG</value>
+                <value>PG-13</value>
+                <value>R</value>
+                <value>NC-17</value>
+            </array>
+        </constructor-arg>
+    </bean>
+    
+    <bean id="myView" class="com.mthree.dvdlibrary.ui.DvdLibrayView">
+        <constructor-arg ref="myIo=" />
+        <constructor-arg value="0" />
+        <constructor-arg value="12" />
+    </bean>
+    
+    <bean id="dao" class="com.mthree.dvdlibrary.dao.DvdLibraryDaoFileImpl">
+        
+    </bean>
+    <bean id="controller" class="com.mthree.dvdlibrary.controller.DvdLibraryController">
+        <constructor-arg ref="myView"/>
+        <constructor-arg ref="dao"/>
+    </bean>
+</beans>
+
